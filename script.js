@@ -25,7 +25,8 @@ function draw() {
 }
 
 function mousePressed(){
-  let obj = new Dot(mouseX, mouseY);
+  dots.push(new Dot(mouseX, mouseY));
+  
   
   /* add a line of code that adds "obj" to the "dots" array. Use the .push() method of the dots array object to append the new "obj" to the end of an existing array. Check the Array.push() documentation first to make sure you are using it correctly.
   */
@@ -33,13 +34,13 @@ function mousePressed(){
 }
 
 
-function Dot(X, Y){
+function Dot(tempX, tempY){
   
-  this.x = X;
-  this.y = Y;
+  this.x = tempX;
+  this.y = tempY;
   this.w = random (20, 50);
-  this.sx = random(-5, 5);
-  this.sy = random(-5, 5);
+  this.speedx = random(-5, 5);
+  this.speedy = random(-5, 5);
   this.r = random(0, 255);
   this.g = random(0, 255);
   this.b = random(0, 255);
@@ -50,14 +51,14 @@ function Dot(X, Y){
   }
   
   this.move = function(){
-    this.x += this.sx;
-    this.y += this.sy;
+    this.x += this.speedx;
+    this.y += this.speedy;
     
     if (this.x < 0 || this.x > width){
-        this.sx *= -1;
+        this.speedx *= -1;
     }
     if (this.y < 0 || this.y > height){
-        this.sy *= -1;
+        this.speedy *= -1;
     }
   }
     
